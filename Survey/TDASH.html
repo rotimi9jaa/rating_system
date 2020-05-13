@@ -1,0 +1,87 @@
+<?php
+ $con = mysqli_connect('localhost:3307','root','','tutorial');
+?>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['line']});
+      google.charts.setOnLoadCallback(drawChart);
+	  
+	 
+
+    function drawChart() {
+
+      /*var data = new google.visualization.arrayToDataTable();
+	  
+	  data.addColumn('number', 'Time');
+      data.addColumn('number', 'Speech Rate');
+      data.addColumn('number', 'Body Language');
+      data.addColumn('number', 'Class Engagement');
+      data.addColumn('number', 'Course Material Content');
+	  data.addColumn('number', 'Percentage Assimilation');
+
+      data.addRows([
+	  <?php
+	  $x = 1;
+		while($x <=5){
+			
+			$query = "SELECT ROUND(AVG(rating),1) as averageRating FROM post_rating WHERE timestamp > DateADD(mi, -75, CURRENT_TIMESTAMP) AND < DateADD(mi, -60, CURRENT_TIMESTAMP AND postid=".$postid;
+			$result = mysqli_query($con,$query) or die(mysqli_error());
+			$fetchAverage = mysqli_fetch_array($result);
+			$averageRating = $fetchAverage['averageRating'];
+			
+			$query = "SELECT ROUND(AVG(rating),1) as averageRating FROM post_rating WHERE timestamp > DateADD(mi, -60, CURRENT_TIMESTAMP) AND < DateADD(mi, -45, CURRENT_TIMESTAMP AND postid=".$postid;
+			$result = mysqli_query($con,$query) or die(mysqli_error());
+			$fetchAverage = mysqli_fetch_array($result);
+			$averageRating1 = $fetchAverage['averageRating'];
+			
+			$query = "SELECT ROUND(AVG(rating),1) as averageRating FROM post_rating WHERE timestamp > DateADD(mi, -45, CURRENT_TIMESTAMP) AND DateADD(mi, -30, CURRENT_TIMESTAMP AND postid=".$postid;
+			$result = mysqli_query($con,$query) or die(mysqli_error());
+			$fetchAverage = mysqli_fetch_array($result);
+			$averageRating2 = $fetchAverage['averageRating'];
+			
+			$query = "SELECT ROUND(AVG(rating),1) as averageRating FROM post_rating WHERE timestamp > DateADD(mi, -30, CURRENT_TIMESTAMP) AND DateADD(mi, -15, CURRENT_TIMESTAMP AND postid=".$postid;
+			$result = mysqli_query($con,$query) or die(mysqli_error());
+			$fetchAverage = mysqli_fetch_array($result);
+			$averageRating3 = $fetchAverage['averageRating'];
+			
+			$query = "SELECT ROUND(AVG(rating),1) as averageRating FROM post_rating WHERE timestamp > DateADD(mi, -15, CURRENT_TIMESTAMP) AND postid=".$postid;
+			$result = mysqli_query($con,$query) or die(mysqli_error());
+			$fetchAverage = mysqli_fetch_array($result);
+			$averageRating4 = $fetchAverage['averageRating'];
+			
+			
+		echo [$x, $averageRating, $averageRating1, $averageRating2, $averageRating3, $averageRating4],
+		$x+=1; 
+}		
+	  ?>
+      ]);*/
+
+      var options = {
+        chart: {
+          title: 'Box Office Earnings in First Two Weeks of Opening',
+          subtitle: 'in millions of dollars (USD)'
+        },
+        width: 900,
+        height: 500,
+        axes: {
+          x: {
+            0: {side: 'top'}
+          }
+        }
+      };
+
+      var chart = new google.charts.Line(document.getElementById('line_top_x'));
+
+      chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+  </script>
+</head>
+<body>
+  <div id="line_top_x"></div>
+</body>
+</html>
